@@ -2,6 +2,11 @@
 
 :root {
   background-color: rgb(0, 0, 0);
+  --orange: #ec4523;
+}
+
+* {
+  box-sizing: border-box;
 }
 body {
   width: 100vw;
@@ -61,7 +66,8 @@ a:hover {
   width: 50px;
   height: 50px;
   display: flex;
-  background-color: red;
+  background-image: url(../assets/profile-picture.jpg);
+  background-size: contain;
   border-radius: 50%;
   cursor: pointer;
 }
@@ -89,6 +95,7 @@ HERO
   justify-content: end;
   flex-direction: column;
   padding: 40px;
+  margin-bottom: 40px;
 }
 
 h1 {
@@ -105,16 +112,21 @@ h3 {
   color: white;
 }
 
-h5{
+h5 {
   margin-top: 40px;
-  font-size: 0px;
+  font-size: 15px;
   font-family: "dederon-sans-web", sans-serif;
   opacity: 0.3;
   color: white;
 }
 
+.active {
+  color: var(--orange);
+  text-decoration: underline;
+}
+
 .card-finder {
-  height: 100vh;
+  min-height: 100vh;
 }
 
 /*
@@ -128,13 +140,106 @@ CARD FINDER
   flex-direction: column;
 }
 
-input[type="text"] {
-  width: 70vw;
-  /* height: 5vh; */
-  background-color: rgba(255, 255, 255, 0.585);
-  padding: 15px;
-  border-radius: 30px;
-  outline: 1px solid white;
+button {
   border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+input {
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+input:focus {
+  outline: 2px solid white;
+}
+
+input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+form {
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.svg-icon {
+  width: 25px;
+}
+
+/* Button on top of the Input */
+.wrapper {
+  width: 70%;
+  max-width: 100%;
+  position: relative;
   margin-top: 50px;
+}
+
+.wrapper input {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid white;
+  border-radius: 50px;
+  padding: 1rem 2rem;
+  width: 100%;
+}
+
+.wrapper button {
+  background: white;
+  border-radius: 50px;
+  aspect-ratio: 1;
+  height: 80%;
+
+  position: absolute;
+  top: 10%;
+  right: 5px;
+}
+
+article {
+  text-align: center;
+}
+
+.card-layout {
+  margin-top: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 10px 10px 32px 0px rgba(0, 0, 0, 0.41);
+  padding-top: 60px;
+  padding-bottom: 60px;
+  justify-content: center;
+  background-size: cover;
+  background-position: bottom;
+  background-image: linear-gradient(
+      to bottom,
+      transparent,
+      rgba(0, 0, 0, 0.589)
+    ),
+    url("../assets/images/playmat.png");
+}
+
+.card-img {
+  border-radius: 10px;
+}
+
+.card-holder {
+  background-color: rgba(206, 206, 206, 0.646);
+  padding: 10px;
+}
+
+.card-name {
+  margin-top: 8px;
+  font-weight: bold;
+}
+
+.card-img:hover {
+  scale: 1.02;
+  transition: all 300ms ease-in;
 }
