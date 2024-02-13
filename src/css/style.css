@@ -84,17 +84,18 @@ HERO
 .hero {
   width: 100%;
   height: 87vh;
-  background-image: url(../assets/header.png);
+  background-image: linear-gradient(to bottom, transparent, #100f15a8),
+    url(../assets/header.png);
   background-repeat: no-repeat;
-  background-position: right;
-  background-size: contain;
+  background-position: center;
+  background-size: cover;
   -webkit-box-shadow: 0px -2px 23px 0px rgba(226, 72, 72, 0.53);
   -moz-box-shadow: 0px -2px 23px 0px rgba(226, 72, 72, 0.53);
   box-shadow: 0px -2px 23px 0px rgba(226, 72, 72, 0.53);
   display: flex;
   justify-content: end;
   flex-direction: column;
-  padding: 40px;
+  padding: 50px;
   margin-bottom: 40px;
 }
 
@@ -211,7 +212,6 @@ article {
   gap: 30px;
   padding: 20px;
   border-radius: 20px;
-  box-shadow: 10px 10px 32px 0px rgba(0, 0, 0, 0.41);
   padding-top: 60px;
   padding-bottom: 60px;
   justify-content: center;
@@ -242,4 +242,28 @@ article {
 .card-img:hover {
   scale: 1.02;
   transition: all 300ms ease-in;
+}
+
+@media screen and (max-width: 750px) {
+  .right a {
+    opacity: 0;
+    display: none;
+    transition: ease all 0.5s;
+  }
+
+  h1 {
+    font-size: 40px;
+    text-shadow: 1px 1px 2px black;
+    transition: ease all 0.5s;
+  }
+
+  .nav {
+    opacity: 0;
+    transition: ease all 0.5s;
+  }
+
+  .hero {
+    background-image: linear-gradient(to bottom, transparent, #100f15a8),
+      url(../assets/header.png);
+  }
 }
