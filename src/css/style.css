@@ -105,6 +105,14 @@ h3 {
   color: white;
 }
 
+h5{
+  margin-top: 40px;
+  font-size: 10px;
+  font-family: "dederon-sans-web", sans-serif;
+  opacity: 0.3;
+  color: white;
+}
+
 .card-finder {
   height: 100vh;
 }
