@@ -11,6 +11,15 @@ function raf(time) {
 
 requestAnimationFrame(raf);
 
+const openPopup = (details) => {
+  document.getElementById("cardDetails").innerText = details;
+  document.getElementById("popup").style.display = "block";
+};
+
+const closePopup = () => {
+  document.getElementById("popup").style.display = "none";
+};
+
 const main = async () => {
   try {
     const response = await fetch(`https://api.magicthegathering.io/v1/cards`);
@@ -20,6 +29,7 @@ const main = async () => {
     const cardName = document.getElementsByClassName("card-name");
     const cardHolder = document.getElementsByClassName("card-holder");
     const cardIMG = document.getElementsByClassName("card-img");
+
     for (let i = 0; i < cardHolder.length; i++) {
       const random = Math.floor(Math.random() * 100);
 
@@ -27,19 +37,32 @@ const main = async () => {
         cardIMG[i].src = data.cards[random].imageUrl;
         cardName[i].textContent = data.cards[random].name;
 
+        // Revert border styles
+        cardIMG[i].style.boxShadow = "0px 2px 6px 5px rgba(0, 0, 0, 0.5)";
+        cardIMG[i].style.outline = "3px solid white";
+
         if (data.cards[random].rarity === "Uncommon") {
-          cardIMG[i].style.boxShadow = "0px 2px 6px 5px rgb(18, 80, 179,0.6)";
+          cardIMG[i].style.boxShadow = "0px 2px 6px 5px rgba(18, 80, 179, 0.6)";
           cardIMG[i].style.outline = "3px solid rgb(18, 80, 179)";
         } else if (data.cards[random].rarity === "Common") {
-          cardIMG[i].style.boxShadow = "0px 2px 6px 5px rgb(255, 255, 255,0.6)";
+          cardIMG[i].style.boxShadow =
+            "0px 2px 6px 5px rgba(255, 255, 255, 0.6)";
           cardIMG[i].style.outline = "3px solid rgb(255, 255, 255)";
         } else if (data.cards[random].rarity === "Rare") {
-          cardIMG[i].style.boxShadow = "0px 2px 6px 5px rgb(174, 186, 85,0.7)";
+          cardIMG[i].style.boxShadow =
+            "0px 2px 6px 5px rgba(174, 186, 85, 0.7)";
           cardIMG[i].style.outline = "3px solid rgb(174, 186, 85)";
         } else {
-          cardIMG[i].style.boxShadow = "0px 2px 6px 5px rgb(151, 0, 0,0.9)";
+          cardIMG[i].style.boxShadow = "0px 2px 6px 5px rgba(151, 0, 0, 0.9)";
           cardIMG[i].style.outline = "3px solid rgb(151, 0, 0)";
         }
+
+        // Add the event listener to open the popup on card click
+        cardHolder[i].addEventListener("click", () => {
+          openPopup(
+            `Card Name: ${data.cards[random].name}\nRarity: ${data.cards[random].rarity}`
+          );
+        });
       } else {
         i--;
       }
@@ -48,4 +71,8 @@ const main = async () => {
     console.error(error);
   }
 };
-main();
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Run your main function when the DOM is fully loaded
+  main();
+});

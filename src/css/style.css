@@ -54,7 +54,6 @@ ul li:hover,
 a:hover {
   transition: all 300ms ease-in;
   text-decoration: underline;
-  scale: 1.01;
 }
 
 .right {
@@ -75,6 +74,7 @@ a:hover {
   transition: all 300ms ease-in;
   scale: 1.2;
   cursor: pointer;
+  border: 3px solid white;
 }
 
 /*
@@ -87,8 +87,8 @@ HERO
   background-image: linear-gradient(to bottom, transparent, #100f15a8),
     url(../assets/header.png);
   background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
+  background-position: right;
+  background-size: contain;
   -webkit-box-shadow: 0px -2px 23px 0px rgba(226, 72, 72, 0.53);
   -moz-box-shadow: 0px -2px 23px 0px rgba(226, 72, 72, 0.53);
   box-shadow: 0px -2px 23px 0px rgba(226, 72, 72, 0.53);
@@ -128,6 +128,7 @@ h5 {
 
 .card-finder {
   min-height: 100vh;
+  margin-bottom: 100px;
 }
 
 /*
@@ -139,6 +140,7 @@ CARD FINDER
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  padding: 40px;
 }
 
 button {
@@ -215,14 +217,10 @@ article {
   padding-top: 60px;
   padding-bottom: 60px;
   justify-content: center;
+  align-items: center;
   background-size: cover;
   background-position: bottom;
-  background-image: linear-gradient(
-      to bottom,
-      transparent,
-      rgba(0, 0, 0, 0.589)
-    ),
-    url("../assets/images/playmat.png");
+  background-color: rgba(0, 0, 0, 0.589);
 }
 
 .card-img {
@@ -239,9 +237,22 @@ article {
   font-weight: bold;
 }
 
-.card-img:hover {
+/* .card-img:hover {
   scale: 1.02;
   transition: all 300ms ease-in;
+} */
+
+/*
+FOOTER
+*/
+
+footer {
+  height: 40vh;
+  border-top: 1px solid white;
+  -webkit-box-shadow: 0px -5px 23px 0px rgba(255, 255, 255, 0.49);
+  -moz-box-shadow: 0px -5px 23px 0px rgba(255, 255, 255, 0.49);
+  box-shadow: 0px -5px 23px 0px rgba(255, 255, 255, 0.49);
+  display: grid;
 }
 
 @media screen and (max-width: 750px) {
@@ -266,4 +277,34 @@ article {
     background-image: linear-gradient(to bottom, transparent, #100f15a8),
       url(../assets/header.png);
   }
+}
+
+.info-toggle {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  padding: 50px;
+  display: none;
+}
+
+.wrapper-card {
+  background-color: rgba(0, 0, 0, 0.8);
+  height: 100%;
+  border-radius: 30px;
+  outline: 3px solid white;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.wrapper-card > button {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  justify-content: right;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+#cardDetails {
+  color: white;
 }
