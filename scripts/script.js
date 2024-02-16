@@ -11,8 +11,9 @@ function raf(time) {
 
 requestAnimationFrame(raf);
 
-const openPopup = (details) => {
+const openPopup = (details, imageUrl) => {
   document.getElementById("cardDetails").innerText = details;
+  document.getElementById("popupCardImg").src = imageUrl;
   document.getElementById("popup").style.display = "block";
 };
 
@@ -36,8 +37,6 @@ const main = async () => {
       if (data.cards[random].imageUrl && data.cards[random].name) {
         cardIMG[i].src = data.cards[random].imageUrl;
         cardName[i].textContent = data.cards[random].name;
-
-        // Revert border styles
         cardIMG[i].style.boxShadow = "0px 2px 6px 5px rgba(0, 0, 0, 0.5)";
         cardIMG[i].style.outline = "3px solid white";
 
@@ -57,10 +56,10 @@ const main = async () => {
           cardIMG[i].style.outline = "3px solid rgb(151, 0, 0)";
         }
 
-        // Add the event listener to open the popup on card click
         cardHolder[i].addEventListener("click", () => {
           openPopup(
-            `Card Name: ${data.cards[random].name}\nRarity: ${data.cards[random].rarity}`
+            `Card Name: ${data.cards[random].name}\nRarity: ${data.cards[random].rarity}`,
+            data.cards[random].imageUrl
           );
         });
       } else {
@@ -73,6 +72,5 @@ const main = async () => {
 };
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Run your main function when the DOM is fully loaded
   main();
 });
