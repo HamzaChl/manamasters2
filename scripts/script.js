@@ -35,8 +35,12 @@ const main = async () => {
       const random = Math.floor(Math.random() * 100);
 
       if (data.cards[random].imageUrl && data.cards[random].name) {
+        const rarityLetter = getRarityLetter(data.cards[random].rarity);
+
         cardIMG[i].src = data.cards[random].imageUrl;
-        cardName[i].textContent = data.cards[random].name;
+        cardName[
+          i
+        ].innerHTML = `${data.cards[random].name} <span class="rarity">${rarityLetter}</span>`;
         cardIMG[i].style.boxShadow = "0px 2px 6px 5px rgba(0, 0, 0, 0.5)";
         cardIMG[i].style.outline = "3px solid white";
 
@@ -74,6 +78,22 @@ const main = async () => {
 document.addEventListener("DOMContentLoaded", (e) => {
   main();
 });
+
+// Fonction pour obtenir la lettre de rareté correspondante
+function getRarityLetter(rarity) {
+  switch (rarity) {
+    case "Common":
+      return "●";
+    case "Uncommon":
+      return "♦";
+    case "Rare":
+      return "★";
+    case "Mythic":
+      return "˗ˏˋ ★ ˎˊ˗";
+    default:
+      return "";
+  }
+}
 
 // ALS ER OP FORM GESUBMIT WORDT, PAGINA OMHOOG
 
