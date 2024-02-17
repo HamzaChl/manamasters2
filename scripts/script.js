@@ -71,6 +71,13 @@ const main = async () => {
   }
 };
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", (e) => {
   main();
+});
+
+// ALS ER OP FORM GESUBMIT WORDT, PAGINA OMHOOG
+
+const form = document.getElementById("form");
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
 });

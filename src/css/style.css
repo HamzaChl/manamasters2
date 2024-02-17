@@ -238,10 +238,13 @@ article {
   font-weight: bold;
 }
 
-/* .card-img:hover {
+/*
+BUG ALS KAART GEHOVERD WORDT BLIJFT HET */
+
+.card-img:hover {
   scale: 1.02;
   transition: all 300ms ease-in;
-} */
+}
 
 /*
 FOOTER
@@ -314,6 +317,7 @@ footer {
   padding-right: 100px;
   padding-left: 100px;
   display: none;
+  z-index: 1000;
 }
 
 .wrapper-card {
@@ -340,4 +344,8 @@ footer {
 
 #cardDetails {
   color: white;
+}
+
+.popup-img {
+  scale: 1.3;
 }
